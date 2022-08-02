@@ -4,30 +4,46 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // The `/api/products` endpoint
 
 // get all products
-  router.get('/', (req, res) => {
+  router.get('/', async(req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
     try {
-      const tagData = await Category.findAll({
-        include: [{model: Tag,
+      const productsData = await Product.findAll({
+        include: [Category,{
+          model: Tag,
           through: ProductTag,
         }],
       });
-      res.status(200).json(tagData);
+      res.status(200).json(productsData);
     } catch (err) {
       res.status(500).json(err);
     }
   });
 
-
 // get one product
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+  try {
+    const findProduct = await Product.findByPk(req.params.id, {
+      include: [Category,{
+        model: Tag,
+        through: ProductTag,
+      }],
+    });
+    if (!findProduct){
+      res.status(404).json({message: 'No product found with this id!'});
+      return;
+    }
+    res.status(200).json(findProduct);
+  } catch (err){
+    res.status(500).json(err);
+
+  }
 });
 
 // create new product
-router.post('/', (req, res) => {
+router.post('/', async(req, res) => {
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -59,7 +75,7 @@ router.post('/', (req, res) => {
 });
 
 // update product
-router.put('/:id', (req, res) => {
+router.put('/:id', async(req, res) => {
   // update product data
   Product.update(req.body, {
     where: {
@@ -100,8 +116,22 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async(req, res) => {
   // delete one product by its `id` value
+  try{
+    const deleteProduct = await Product.destroy({
+       where:{
+        id: req.params.id
+       }
+    });
+  if(!deleteProduct) {
+    res.status(404).json({ message: 'This category does not exist!'});
+    return;
+  }
+  res.status(200).json(deleteProduct);
+} catch (err){
+  res.status(500).json(err);
+}
 });
 
 module.exports = router;
