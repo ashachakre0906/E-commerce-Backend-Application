@@ -19,16 +19,27 @@ router.get('/', async (req, res) => {
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
-  Category.findByPk(req.params.id).then((categoryData) => {
-    res.json(categoryData);
-  });
-  });
+  try {
+    const categoryData = await Category.findByPk(req.params.id, {
+       include: [{model: Product}],
+    });
+    if (!categoryData){
+      res.status(404).json({message: 'No category found with this id!'});
+      return;
+    }
+    res.status(200).json(categoryData);
+  } catch (err){
+    res.status(500).json(err);
+
+  }
+
+});
 
 router.post('/',async (req, res) => {
   // create a new category
  try {
-  const categoryData = await Category.create(req.body);
-  res.status(200).json(categoryData);
+  const createCategory = await Category.create(req.body);
+  res.status(200).json(createCategory);
  } catch (err) {
   res.status(400).json(err);
  }
@@ -37,16 +48,16 @@ router.post('/',async (req, res) => {
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
   try {
-    const categoryData = await Category.update(req.body,{
+    const updateCategory = await Category.update(req.body,{
       where:{
         id: req.params.id,
       },
     });
-  if (!categoryData[0]) {
+  if (!updateCategory[0]) {
      res.status(404).json({message: 'No user with this id!'});
      return;
     }
-    res.status(200).json(categoryData);
+    res.status(200).json(updateCategory);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -56,16 +67,16 @@ router.put('/:id', (req, res) => {
 router.delete('/:id',async (req, res) => {
   // delete a category by its `id` value
   try{
-    const categoryData = await Category.destroy({
+    const deleteCategory = await Category.destroy({
        where:{
         id: req.params.id
        }
     });
-  if(!categoryData) {
-    res.status(404).json({ message: 'No category found with this id!'});
+  if(!deleteCategory) {
+    res.status(404).json({ message: 'This category does not exist!'});
     return;
   }
-  res.status(200).json(categoryData);
+  res.status(200).json(deleteCategory);
 } catch (err){
   res.status(500).json(err);
 }
