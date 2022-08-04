@@ -69,45 +69,61 @@ THEN I am able to successfully create, update, and delete data in my database
 
 ## Usage
 ### Code Examples and Screenshots
-***Function generateCards() will generate the cards dynamically for Manager,Employee and Intern through forloop***
+***This is how we set up fields and rules for ProductTag model ***
 ```
-function generateCards(data) {
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].getRole() == "Manager") {
-      let str = `
-         <div class="card mb-3" style="max-width: 18rem;">
-            <div class="card-header"><h3>${data[i].getName()}</h3><i class="fa-solid fa-mug-hot"></i> Manager
-            </div>
-            <div class="card-body text-dark">
-              <h5 class="card-title"></h5>
-              <p class="card-text"></p>
-              <ul class="list-group">
-                <li class="list-group-item">id: ${data[i].getId()}</li>
-                <li class="list-group-item">Email: <a href = "mailto:${data[i].getEmail()}">${data[i].getEmail()}</a></li>
-                <li class="list-group-item">Office number: ${data[i].getOfficeNumber()}</li>
-              </ul>
-            </div>
-         </div>
-    `;
-      cards += str;
+ProductTag.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+
+    product_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "product",
+        key: "id",
+      },
+    },
+```
+
+***PUT route which updates a category by its `id` value***
+```
+router.put('/:id', async(req, res) => {
+  // update a category by its `id` value
+  try {
+    const updateCategory = await Category.update(req.body,{
+      where:{
+        id: req.params.id,
+      },
+    });
+  if (!updateCategory[0]) {
+     res.status(404).json({message: 'No category with this id!'});
+     return;
+    }
+    res.status(200).json(updateCategory);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+
+});
+
 ```
 ## Tests
-Our application is using Jest package for running the suite of unit tests.In order to run jest tests for Employee,Engineer,Intern and Manager classes we need to enter the following command in the terminal.All the tests must PASS.
-```
-npm run test
-```
+GET, POST,PUT AND DELETE for Categories,Products and tag routes being tested in Insomnia Core.
 ## Contributing
 not applicable at this time.
 ## License
-This project is license under [MIT](https://choosealicense.com/licenses/mit/)
+This project is license under [Apache](https://choosealicense.com/licenses/apache/)
+
 ## Technologies Used
-![HTML Badge](https://img.shields.io/badge/HTML-orange.svg)
-![CSS Badge](https://img.shields.io/badge/CSS-purple.svg)
+![Sequelize Badge](https://img.shields.io/badge/Sequelize-magenta.svg)
+![Express.js Badge](https://img.shields.io/badge/Express-purple.svg)
 ![Javascript Badge](https://img.shields.io/badge/Javascript-blue.svg)
 ![Node.js Badge](https://img.shields.io/badge/Node-yellow.svg)
-![Inquirer Badge](https://img.shields.io/badge/Inquirer-orange.svg)
-![Bootstrap Badge](https://img.shields.io/badge/Bootstrap-darkblue.svg)
-![Jest Badge](https://img.shields.io/badge/Jest-grey.svg)
+![mysql2 Badge](https://img.shields.io/badge/mysql2-orange.svg)
 
 ## Questions
 if you have any questions please reach out to me:<br>
