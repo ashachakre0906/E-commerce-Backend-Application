@@ -1,5 +1,4 @@
 # E-commerce-Backend-Application
-# team-Profile-Generator
 ## License
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ## Table of Contents
@@ -22,16 +21,15 @@ POST, PUT, and DELETE routes for category,products and tags.
 
 [Solution URL](https://github.com/ashachakre0906/E-commerce-Backend-Application)
 ## Application Demo
-<!-- ![Live gif](/dist/assets/images/team-profile.gif) -->
+![Live Demo](./public/assets/images/ecommbackendapp.gif)
 
-<!-- [Screencastify link](https://drive.google.com/file/d/1X7fo16XXLiZs6Yr8Qc6COQTPitZe7FGh/view?usp=sharing) -->
+[Screencastify link](https://watch.screencastify.com/v/mwtQKfVpc1W25CZnSCrQ)
 
-***The following image shows the generated HTML’s appearance and functionality in large screen***
-<img src = "/dist/assets/images/team-profile.png" alt = "image of team profile">
+<img src = "/public/assets/images/getallcategories.png" alt = "GET all categories">
 
-***The following image of a webpage is Responsive you can shrink the size and set the appropriate responsive breakpoints***
-
-<img src = "/dist/assets/images/team-profile-responsive.png" alt = "image of team profile">
+<img src = "/public/assets/images/getoneproductbyid.png.png" alt = "GET one product by id">
+<img src = "/public/assets/images/postcategory.png" alt = "Create new category">
+<img src = "/public/assets/images/puttag.png" alt = "Updating new tag">
 
 ## User Story
 ```
@@ -69,7 +67,7 @@ THEN I am able to successfully create, update, and delete data in my database
 
 ## Usage
 ### Code Examples and Screenshots
-***This is how we set up fields and rules for ProductTag model ***
+***This is how we set up fields and rules for ProductTag model***
 ```
 ProductTag.init(
   {
@@ -113,8 +111,6 @@ router.put('/:id', async(req, res) => {
 ```
 ## Tests
 GET, POST,PUT AND DELETE for Categories,Products and tag routes being tested in Insomnia Core.
-## Contributing
-not applicable at this time.
 ## License
 This project is license under [Apache](https://choosealicense.com/licenses/apache/)
 
