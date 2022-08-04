@@ -128,7 +128,7 @@ This project is license under [Apache](https://choosealicense.com/licenses/apach
 ![mysql2 Badge](https://img.shields.io/badge/mysql2-orange.svg)
 
 ## Questions
-if you have any questions please reach out to me:<br>
+Please reach out to me if you have any questions:<br>
 Email Address: chourpagar.asha@gmail.com <br>
 Github Repo URL:[GitHub](https://github.com/ashachakre0906)
 
