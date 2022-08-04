@@ -43,10 +43,17 @@ THEN I am able to successfully create, update, and delete data in my database
 
 [Screencastify link](https://watch.screencastify.com/v/mwtQKfVpc1W25CZnSCrQ)
 
+* GET ALL Categories
 <img src = "/public/assets/images/getallcategories.png" alt = "GET all categories">
 
+* GET one product by id 
 <img src = "/public/assets/images/getoneproductbyid.png" alt = "GET one product by id">
+
+* Create new category
 <img src = "/public/assets/images/postcategory.png" alt = "Create new category">
+
+* Update new tag
+  
 <img src = "/public/assets/images/puttag.png" alt = "Updating new tag">
 
 
