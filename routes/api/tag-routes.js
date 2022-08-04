@@ -21,12 +21,12 @@ router.get('/', async(req, res) => {
   // be sure to include its associated Product data
   router.get('/:id', async (req, res) => {
     try {
-      const tagData = await Reader.findByPk(req.params.id, {
+      const tagData = await Tag.findByPk(req.params.id, {
         include: [{model: Product, through: ProductTag}],
       });
   
       if (!tagData) {
-        res.status(404).json({ message: 'No reader found with this id!' });
+        res.status(404).json({ message: 'No tags found with this id!' });
         return;
       }
       res.status(200).json(tagData);
@@ -55,7 +55,7 @@ router.put('/:id', async(req, res) => {
       },
     });
   if (!updateTag[0]) {
-     res.status(404).json({message: 'No tag associated with this id!'});
+     res.status(404).json({message: 'No tags associated with this id!'});
      return;
     }
     res.status(200).json(updateTag);
@@ -73,7 +73,7 @@ router.delete('/:id', async(req, res) => {
       }
     });
     if(deleteTag) {
-      res.status(404).json({message: 'No tag associated with this id'});
+      res.status(404).json({message: 'No tags associated with this id'});
       return;
     }
    res.status(200).json(deleteTag);
