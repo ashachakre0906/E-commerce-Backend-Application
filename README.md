@@ -7,7 +7,6 @@
   - [Installation](#installation)
   - [Usage](#usage)
     - [Code Examples and Screenshots](#code-examples-and-screenshots)
-  - [Contributing](#contributing)
   - [License](#license-1)
   - [Tests](#tests)
   - [Technologies Used](#technologies-used)
@@ -17,20 +16,6 @@ Challenge is to build the back end for an e-commerce site.This application was b
 GET routes to return all categories, all products, and all tags.
 GET routes to return a single category, a single product, and a single tag .
 POST, PUT, and DELETE routes for category,products and tags.
-
-
-[Solution URL](https://github.com/ashachakre0906/E-commerce-Backend-Application)
-## Application Demo
-![Live Demo](./public/assets/images/ecommbackendapp.gif)
-
-[Screencastify link](https://watch.screencastify.com/v/mwtQKfVpc1W25CZnSCrQ)
-
-<img src = "/public/assets/images/getallcategories.png" alt = "GET all categories">
-
-<img src = "/public/assets/images/getoneproductbyid.png.png" alt = "GET one product by id">
-<img src = "/public/assets/images/postcategory.png" alt = "Create new category">
-<img src = "/public/assets/images/puttag.png" alt = "Updating new tag">
-
 ## User Story
 ```
 AS A manager at an internet retail company
@@ -51,6 +36,20 @@ THEN the data for each of these routes is displayed in a formatted JSON
 WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
 THEN I am able to successfully create, update, and delete data in my database
 ```
+
+[Solution URL](https://github.com/ashachakre0906/E-commerce-Backend-Application)
+## Application Demo
+![Live Demo](./public/assets/images/ecommbackendapp.gif)
+
+[Screencastify link](https://watch.screencastify.com/v/mwtQKfVpc1W25CZnSCrQ)
+
+<img src = "/public/assets/images/getallcategories.png" alt = "GET all categories">
+
+<img src = "/public/assets/images/getoneproductbyid.png" alt = "GET one product by id">
+<img src = "/public/assets/images/postcategory.png" alt = "Create new category">
+<img src = "/public/assets/images/puttag.png" alt = "Updating new tag">
+
+
 ## Installation
 * Install Node in your computer by going to `https://nodejs.org/en/download/`
 * Create .gitignore file before installing any npm dependencies and include node_modules/ and .DS_Store/ and .env/ so that the directory isn't tracked or uploaded to GitHub.
